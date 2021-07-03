@@ -1,9 +1,17 @@
 #formy {
   width: 50%;
 }
+/* .error {
+  width: 50%;
+  display: grid;
+  place-items: center;
+} */
 
 @media screen and (max-width: 500px) {
   #formy {
+    width: 75%;
+  }
+  .error {
     width: 75%;
   }
 }
