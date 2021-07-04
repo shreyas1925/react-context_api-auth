@@ -5,16 +5,16 @@ import { useAuth } from "../contexts/AuthContext";
 import "./signup.css";
 
 const Signup = () => {
-  // const nameRef = useRef();
+  const nameRef = useRef();
   const emailRef = useRef();
-  // const numberRef = useRef();
+  const numberRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function handleSubmission(e) {
+  const handleSubmission = (e) => {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -24,13 +24,18 @@ const Signup = () => {
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await signup(
+        nameRef.current.value,
+        emailRef.current.value,
+        numberRef.current.value,
+        passwordRef.current.value
+      );
     } catch {
       setError("Failed to create an account");
     }
 
     setLoading(false);
-  }
+  };
 
   return (
     <>
@@ -49,7 +54,7 @@ const Signup = () => {
               {error}
             </Alert>
           )}
-          {/* <Form.Group id="name">
+          <Form.Group id="name">
             <Form.Label className="mt-2">Name:</Form.Label>
             <Form.Control
               type="text"
@@ -58,7 +63,7 @@ const Signup = () => {
               required
               ref={nameRef}
             />
-          </Form.Group> */}
+          </Form.Group>
 
           <Form.Group id="email">
             <Form.Label className="mt-2">Email address:</Form.Label>
@@ -70,7 +75,7 @@ const Signup = () => {
               ref={emailRef}
             />
           </Form.Group>
-          {/* <Form.Group id="number">
+          <Form.Group id="number">
             <Form.Label className="mt-2">Mobile number:</Form.Label>
             <Form.Control
               type="number"
@@ -79,7 +84,7 @@ const Signup = () => {
               required
               ref={numberRef}
             />
-          </Form.Group> */}
+          </Form.Group>
           <Form.Group id="pwd">
             <Form.Label className="mt-2">Password:</Form.Label>
             <Form.Control
