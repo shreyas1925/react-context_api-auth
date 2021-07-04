@@ -1,20 +1,20 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import "./signup.css";
+import { useHistory } from "react-router";
 
 const Signup = () => {
-  const nameRef = useRef();
   const emailRef = useRef();
-  const numberRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
   const { signup, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
-  const handleSubmission = (e) => {
+  async function handleSubmission(e) {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -24,18 +24,14 @@ const Signup = () => {
     try {
       setError("");
       setLoading(true);
-      await signup(
-        nameRef.current.value,
-        emailRef.current.value,
-        numberRef.current.value,
-        passwordRef.current.value
-      );
+      await signup(emailRef.current.value, passwordRef.current.value);
+      history.push("/login");
     } catch {
-      setError("Failed to create an account");
+      setError("Failed to create Account");
     }
 
     setLoading(false);
-  };
+  }
 
   return (
     <>
@@ -43,18 +39,21 @@ const Signup = () => {
         <h1 className="text-center text-capitalize font-weight-bold pt-5 text-primary">
           REGISTER HERE
         </h1>
-        {currentUser.email}
+        {/* {currentUser.email} */}
         <Form
           onSubmit={handleSubmission}
           className="mx-auto my-5 d-flex flex-column"
           id="formy"
         >
-          {error && (
+          {error ? (
             <Alert className="" variant="danger">
               {error}
             </Alert>
-          )}
-          <Form.Group id="name">
+          ) : // <Alert className="" variant="success">
+          //   {/* Account Registered Successfully */}
+          // </Alert>
+          null}
+          {/* <Form.Group id="name">
             <Form.Label className="mt-2">Name:</Form.Label>
             <Form.Control
               type="text"
@@ -63,7 +62,7 @@ const Signup = () => {
               required
               ref={nameRef}
             />
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group id="email">
             <Form.Label className="mt-2">Email address:</Form.Label>
@@ -75,7 +74,7 @@ const Signup = () => {
               ref={emailRef}
             />
           </Form.Group>
-          <Form.Group id="number">
+          {/* <Form.Group id="number">
             <Form.Label className="mt-2">Mobile number:</Form.Label>
             <Form.Control
               type="number"
@@ -84,7 +83,7 @@ const Signup = () => {
               required
               ref={numberRef}
             />
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group id="pwd">
             <Form.Label className="mt-2">Password:</Form.Label>
             <Form.Control
@@ -96,21 +95,22 @@ const Signup = () => {
             />
           </Form.Group>
           <Form.Group id="pwd">
-            <Form.Label className="mt-2">Confirm Password:</Form.Label>
+            <Form.Label className="mt-2">Password:</Form.Label>
             <Form.Control
               type="password"
-              placeholder="Confirm password"
+              placeholder="Enter password"
               autocomplete="off"
               required
               ref={passwordConfirmRef}
             />
           </Form.Group>
+
           <Form.Group className=" ml-2 mt-3 ">
             <p>
-              Already have an account ?{" "}
-              <a href="" className="ml-2 ">
+              Already have an acoount ?{" "}
+              <Link to="/login" className="ml-2 ">
                 Log in
-              </a>
+              </Link>
             </p>
           </Form.Group>
           <Button
@@ -118,7 +118,7 @@ const Signup = () => {
             className="btn btn-outline-info w-100 text-white"
             type="submit"
           >
-            Register
+            Login
           </Button>
         </Form>
       </Container>

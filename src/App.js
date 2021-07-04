@@ -3,7 +3,8 @@ import Signup from "./Components/Signup";
 import { Container } from "react-bootstrap";
 import Login from "./Components/Login";
 import { AuthProvider } from "./contexts/AuthContext";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import DashBoard from "./Components/DashBoard";
 const App = () => {
   return (
     <>
@@ -16,8 +17,19 @@ const App = () => {
             className="d-flex flex-column w-100"
             style={{ minWidth: "400px" }}
           >
-            <Signup />
-            {/* <Login /> */}
+            <Router>
+              <Switch>
+                <Route exact path="/">
+                  <DashBoard />
+                </Route>
+                <Route path="/signup">
+                  <Signup />
+                </Route>
+                <Route path="/login">
+                  <Login />
+                </Route>
+              </Switch>
+            </Router>
           </div>
         </Container>
       </AuthProvider>
