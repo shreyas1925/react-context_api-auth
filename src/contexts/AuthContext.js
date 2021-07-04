@@ -19,6 +19,10 @@ export function AuthProvider({ children }) {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
+  function logout() {
+    return auth.signOut();
+  }
+
   useEffect(() => {
     // Directly provided from tyhe firebase (user will be setted )
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -34,6 +38,7 @@ export function AuthProvider({ children }) {
     currentUser,
     signup,
     login,
+    logout,
   };
 
   return (
