@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Card, Alert } from "react-bootstrap";
+import { Button, Card, Alert, Container, Form } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 
@@ -7,35 +7,47 @@ const DashBoard = () => {
   const [error, setError] = useState("");
   const { logout, currentUser } = useAuth();
   const history = useHistory();
-  const handleLogout = async () => {
+
+  async function handleLogout() {
     setError("");
 
     try {
       await logout();
       history.push("/login");
     } catch {
-      setError("Failed to logout");
+      setError("Failed to log out");
     }
-  };
+  }
+
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email : </strong>
-          {currentUser.email}
+      <Container>
+        <h1 className="text-center text-capitalize font-weight-bold pt-5 text-primary">
+          USER PROFILE
+        </h1>
 
-          <Link to="/update_profile" className="btn btn-primary w-100 mt-3">
+        <Form className="mx-auto my-5 d-flex flex-column" id="formy">
+          <Form.Group id="email">
+            <Form.Label className="mt-2 text-center"></Form.Label>
+            {""}
+            <h5> Email address: {currentUser && currentUser.email}</h5>
+          </Form.Group>
+
+          <Button
+            className="btn btn-outline-info w-100 text-white mt-3"
+            type="submit"
+          >
             Update profile
-          </Link>
-        </Card.Body>
-      </Card>
+          </Button>
+        </Form>
+      </Container>
 
       <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={handleLogout}>
-          Logout
-        </Button>
+        {currentUser && (
+          <Button to="/" onClick={handleLogout} variant="link">
+            Logout
+          </Button>
+        )}
       </div>
     </>
   );

@@ -26,8 +26,9 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     // Directly provided from tyhe firebase (user will be setted )
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user); //means only on adding user we are loading
+      setCurrentUser(user);
       setLoading(false);
+      //means only on adding user we are loading
     });
 
     return unsubscribe;

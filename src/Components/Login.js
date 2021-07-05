@@ -72,6 +72,12 @@ const Signup = () => {
             <p>
               Are you a new user ?{" "}
               <Link to="/signup" className="ml-2 ">
+                Register
+              </Link>
+            </p>
+            <p>
+              Forgot password ?{" "}
+              <Link to="/forgot" className="ml-2 ">
                 Click here
               </Link>
             </p>
