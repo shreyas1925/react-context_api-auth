@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import DashBoard from "./Components/DashBoard";
 import PrivateRoute from "./Components/PrivateRoute";
 import ForgotPassword from "./Components/ForgotPassword";
+import UpdateProfile from "./Components/UpdateProfile";
 
 const App = () => {
   return (
@@ -33,6 +34,9 @@ const App = () => {
                 </Route>
                 <Route path="/forgot">
                   <ForgotPassword />
+                </Route>
+                <Route path="/update">
+                  <UpdateProfile />
                 </Route>
               </Switch>
             </Router>

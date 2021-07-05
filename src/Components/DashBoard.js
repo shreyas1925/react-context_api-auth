@@ -33,12 +33,13 @@ const DashBoard = () => {
             <h5> Email address: {currentUser && currentUser.email}</h5>
           </Form.Group>
 
-          <Button
-            className="btn btn-outline-info w-100 text-white mt-3"
+          <Link
+            className="btn btn-primary w-100  mt-3"
             type="submit"
+            to="/update"
           >
             Update profile
-          </Button>
+          </Link>
         </Form>
       </Container>
 
