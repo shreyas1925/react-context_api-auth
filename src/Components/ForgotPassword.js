@@ -62,7 +62,7 @@ const ForgotPassword = () => {
           </Form.Group>
           <Button
             disabled={loading}
-            className="btn btn-outline-info w-100 text-white mt-3"
+            className="btn  w-100 text-white mt-3"
             type="submit"
           >
             Password Reset

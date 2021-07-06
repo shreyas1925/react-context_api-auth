@@ -115,7 +115,7 @@ const Signup = () => {
           </Form.Group>
           <Button
             disabled={loading}
-            className="btn btn-outline-info w-100 text-white"
+            className="btn  w-100 text-white"
             type="submit"
           >
             Login
