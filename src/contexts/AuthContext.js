@@ -27,13 +27,14 @@ export function AuthProvider({ children }) {
     return auth.sendPasswordResetEmail(email);
   }
 
-  function updateemail(email) {
-    return currentUser.updateemail(email);
+  function updateEmail(email) {
+    return currentUser.updateEmail(email);
   }
 
-  function updatepassword(password) {
-    return currentUser.updatepassword(password);
+  function updatePassword(password) {
+    return currentUser.updatePassword(password);
   }
+
   useEffect(() => {
     // Directly provided from tyhe firebase (user will be setted )
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -52,8 +53,8 @@ export function AuthProvider({ children }) {
     login,
     logout,
     resetpassword,
-    updateemail,
-    updatepassword,
+    updateEmail,
+    updatePassword,
   };
 
   return (

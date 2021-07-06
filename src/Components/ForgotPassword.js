@@ -1,15 +1,15 @@
 import React, { useRef, useState } from "react";
 import { Container, Form, Button, Alert } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const ForgotPassword = () => {
   const emailRef = useRef();
-  const { resetpassword } = useAuth();
+  const { resetPassword } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+
   const [message, setMessage] = useState("");
 
   async function handleSubmission(e) {
@@ -19,7 +19,7 @@ const ForgotPassword = () => {
       setMessage("");
       setError("");
       setLoading(true);
-      await resetpassword(emailRef.current.value);
+      await resetPassword(emailRef.current.value);
       setMessage("Check your mail for further instructions");
     } catch {
       setError("Failed to reset password");

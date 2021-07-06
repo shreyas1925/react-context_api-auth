@@ -9,12 +9,12 @@ const UpdateProfile = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { updateemail, updatepassword, currentUser } = useAuth();
+  const { updateEmail, updatePassword, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  async function handleSubmission(e) {
+  function handleSubmission(e) {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -25,10 +25,10 @@ const UpdateProfile = () => {
     setError("");
 
     if (emailRef.current.value !== currentUser.email) {
-      promises.push(updateemail(emailRef.current.value));
+      promises.push(updateEmail(emailRef.current.value));
     }
     if (passwordRef.current.value) {
-      promises.push(updatepassword(passwordRef.current.value));
+      promises.push(updatePassword(passwordRef.current.value));
     }
 
     Promise.all(promises)
@@ -75,7 +75,6 @@ const UpdateProfile = () => {
               type="password"
               placeholder="Enter password"
               autocomplete="off"
-              required
               ref={passwordRef}
               placeholder="Leave blank to keep it unchanged"
             />
