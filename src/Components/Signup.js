@@ -36,7 +36,7 @@ const Signup = () => {
   return (
     <>
       <Container>
-        <h1 className="text-center text-capitalize font-weight-bold pt-5 text-primary">
+        <h1 className="text-center text-capitalize font-weight-bold pt-5 text-dark">
           REGISTER HERE
         </h1>
         {/* {currentUser.email} */}
@@ -115,10 +115,11 @@ const Signup = () => {
           </Form.Group>
           <Button
             disabled={loading}
-            className="btn  w-100 text-white"
+            className="w-100 text-white"
             type="submit"
+            className="btn btn-info"
           >
-            Login
+            Register
           </Button>
         </Form>
       </Container>

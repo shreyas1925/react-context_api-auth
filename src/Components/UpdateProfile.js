@@ -46,8 +46,8 @@ const UpdateProfile = () => {
   return (
     <>
       <Container>
-        <h1 className="text-center text-capitalize font-weight-bold pt-5 text-primary">
-          UPLOAD PROFILE
+        <h1 className="text-center text-capitalize font-weight-bold pt-5 text-dark">
+          UPDATE PROFILE
         </h1>
 
         <Form
@@ -89,16 +89,17 @@ const UpdateProfile = () => {
               placeholder="Leave blank to keep it unchanged"
             />
           </Form.Group>
-
+          <br />
           <Button
             disabled={loading}
             className="btn btn-outline-info w-100 mt-3 text-white"
             type="submit"
+            className="btn btn-info"
           >
             Update
           </Button>
           <Form.Group className=" ml-2 mt-3 text-center">
-            <Link to="/" variant="link">
+            <Link to="/" variant="link" style={{ "text-decoration": "none" }}>
               Cancel
             </Link>
           </Form.Group>

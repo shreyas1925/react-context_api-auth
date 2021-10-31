@@ -31,7 +31,7 @@ const Signup = () => {
   return (
     <>
       <Container>
-        <h1 className="text-center text-capitalize font-weight-bold pt-5 text-primary">
+        <h1 className="text-center text-capitalize font-weight-bold pt-5 text-dark">
           LOGIN HERE
         </h1>
 
@@ -86,6 +86,7 @@ const Signup = () => {
             disabled={loading}
             className="btn  w-100 text-white"
             type="submit"
+            className="btn btn-info"
           >
             Login
           </Button>

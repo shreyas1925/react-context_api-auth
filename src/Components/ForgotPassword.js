@@ -31,7 +31,7 @@ const ForgotPassword = () => {
   return (
     <>
       <Container>
-        <h1 className="text-center text-capitalize font-weight-bold pt-5 text-primary">
+        <h1 className="text-center text-capitalize font-weight-bold pt-5 text-dark">
           Password Reset
         </h1>
 
@@ -60,17 +60,19 @@ const ForgotPassword = () => {
               ref={emailRef}
             />
           </Form.Group>
+          <br />
           <Button
             disabled={loading}
             className="btn  w-100 text-white mt-3"
             type="submit"
+            className="btn btn-info"
           >
             Password Reset
           </Button>
-          <Form.Group className=" ml-2 mt-3 ">
+          <Form.Group className=" ml-2 mt-3 d-flex">
             <p>
               Are you a new user ?{" "}
-              <Link to="/signup" className="ml-2 ">
+              <Link to="/signup" className="ml-2  ">
                 Register
               </Link>
             </p>

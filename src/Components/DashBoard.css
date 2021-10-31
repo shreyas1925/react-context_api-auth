@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&display=swap");
+main {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  font-family: "Gowun Batang", serif;
+}
+
+.image img {
+  width: 700px;
+  height: 420px;
+  margin-left: -50px;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.link:hover {
+  color: white;
+}
+
+.button {
+  border-radius: 50px;
+  outline: none;
+}
+
+p {
+  font-size: 18px;
+  width: 80%;
+}
